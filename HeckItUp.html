@@ -55,6 +55,12 @@
                         searchQuery += "+" + lexicon[Math.floor(Math.random() * (lexicon.length - 1))];
                         terms--;
                     }
+
+                    /**
+                    This setTimeout loop and subsequent recursion is to get around the fact that most browsers 
+                    immediately catch on if you open and close a bunch of pages at a time. In the same vein, Chrome
+                    doesn't allow you to access a cross-origin frame, hence the closing and opening of pages rather than refreshing
+                    */
                     testWindow = window.open("https://www.google.com/search?q=" + searchQuery);
                     setTimeout(function(){ 
                         testWindow.close()
